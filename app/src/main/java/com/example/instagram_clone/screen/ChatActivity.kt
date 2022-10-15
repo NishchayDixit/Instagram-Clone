@@ -31,14 +31,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.instagram_clone.R
 import com.example.instagram_clone.data.ChatList
 import com.example.instagram_clone.model.Chat
 
 @Composable
 fun ChatActivity() {
+    val navController = rememberNavController()
     Column(modifier = Modifier.padding(5.dp)) {
-        TopBar(userName = "_nishchay_dixit_")
+        TopBar(userName = "_nishchay_dixit_", navigateUp = {navController.navigateUp()})
         val textState = remember { mutableStateOf(TextFieldValue("")) }
         SearchView(textState)
         ChatCardList(chatList = ChatList().getChatList())
@@ -46,11 +48,14 @@ fun ChatActivity() {
 }
 
 @Composable
-fun TopBar(userName: String) {
+fun TopBar(
+    userName: String,
+    navigateUp: () -> Unit,
+) {
     Box(modifier = Modifier.fillMaxWidth()) {
         Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = navigateUp) {
                     Icon(Icons.Default.ArrowBack, contentDescription = null)
                 }
                 Spacer(modifier = Modifier.width(10.dp))
@@ -133,7 +138,7 @@ fun ChatCard(chat: Chat, modifier: Modifier = Modifier) {
                     Text(text = stringResource(id = chat.messageTime), color = Color.DarkGray)
                 }
                 IconButton(onClick = { /*TODO*/ }) {
-                    Icon(painter = painterResource(id = R.drawable.ic_outlined_camera), contentDescription = null, modifier = Modifier.size(55.dp))
+                    Icon(painter = painterResource(id = R.drawable.ic_outlined_camera), contentDescription = null, modifier = Modifier.size(25.dp))
                 }
             }
         }

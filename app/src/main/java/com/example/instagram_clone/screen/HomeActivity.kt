@@ -2,6 +2,7 @@ package com.example.instagram_clone.screen
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -27,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -41,6 +43,7 @@ fun HomeActivity() {
     Box {
         Column {
             Column {
+                val navController = rememberNavController()
                 PostComponent(postList = PostList().getPostList())
             }
         }
@@ -49,7 +52,8 @@ fun HomeActivity() {
 
 @Composable
 fun HeaderComponent(
-    onMessageClick: () -> Unit
+    onMessageClick: () -> Unit,
+    onSearchClicked: () -> Unit
 ) {
     TopAppBar(
         title = {
@@ -62,9 +66,9 @@ fun HeaderComponent(
         backgroundColor = if (isSystemInDarkTheme()) Color.Black else Color.White,
         elevation = 2.dp,
         actions = {
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = onSearchClicked) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_outlined_add),
+                    painter = painterResource(id = R.drawable.ic_outlined_search),
                     contentDescription = "Add Post",
                     modifier = Modifier.size(25.dp),
                     tint = if (isSystemInDarkTheme()) Color.White else Color.Black
@@ -85,13 +89,13 @@ fun HeaderComponent(
 @Preview(showBackground = true)
 @Composable
 fun TopBarPreview() {
-    StoryComponent(
-        User(painterResource(id = R.drawable.profile_1), stringResource(id = R.string.userName_1))
-    )
 }
 
 @Composable
-fun StoryComponent(user: User) {
+fun StoryComponent(
+    user: User,
+    onImageClick: () -> Unit
+) {
     Box(
         modifier = Modifier.padding(10.dp),
         contentAlignment = Alignment.TopCenter
@@ -111,7 +115,8 @@ fun StoryComponent(user: User) {
             Image(
                 modifier = Modifier
                     .size(80.dp)
-                    .clip(CircleShape),
+                    .clip(CircleShape)
+                    .clickable(enabled = true, onClick = onImageClick),
                 painter = user.profilePic,
                 contentDescription = "Story",
                 contentScale = ContentScale.Crop
@@ -132,7 +137,6 @@ fun PostComponent(
     postList: List<Post>,
     modifier: Modifier = Modifier,
 ) {
-    val navController = rememberNavController()
     val users = listOf(
         User(
             painterResource(id = R.drawable.profile_1),
@@ -179,17 +183,20 @@ fun PostComponent(
     Scaffold(
         topBar = {
             HeaderComponent(
-                onMessageClick = { }
+                onMessageClick = { },
+                onSearchClicked = { }
             )
         },
         backgroundColor = if (isSystemInDarkTheme()) Color.Black else Color.White,
-        bottomBar = { BottomAppNavigation() }
+        bottomBar = {
+            BottomAppNavigation()
+        }
     ) { innerPadding ->
         LazyColumn(modifier = Modifier.padding(innerPadding)) {
             item {
                 LazyRow {
                     items(users) { user ->
-                        StoryComponent(user)
+                        StoryComponent(user, onImageClick = {  })
                     }
                 }
             }
@@ -362,7 +369,7 @@ fun BottomAppNavigation() {
             onClick = { },
             icon = {
                 Icon(
-                    painter = painterResource(R.drawable.ic_outlined_search),
+                    painter = painterResource(R.drawable.ic_outlined_add),
                     contentDescription = "Search Icon",
                     modifier = Modifier.size(28.dp),
                     tint = if (isSystemInDarkTheme()) Color.White else Color.Black
