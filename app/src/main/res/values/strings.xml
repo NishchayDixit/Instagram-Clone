@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Instagram_Clone</string>
+
+    <string name="userName_1">Lisa Ellison</string>
+    <string name="userName_2">Maria Paige</string>
+    <string name="userName_3">Nathan Butler</string>
+    <string name="userName_4">Adrian Oliver</string>
+    <string name="userName_5">Kakashi Hatake</string>
+    <string name="userName_6">Itachi Uchiha</string>
+    <string name="userName_7">Satoru Gojo</string>
+    <string name="userName_8">Shoyo Hinata</string>
+    <string name="userName_9">Edward Metcalfe</string>
+    <string name="userName_10">Diana James</string>
+
+    <string name="likesCount_1">78,804 likes</string>
+    <string name="likesCount_2">14,854 likes</string>
+    <string name="likesCount_3">37,833 likes</string>
+    <string name="likesCount_4">53,824 likes</string>
+    <string name="likesCount_5">1,496,320 likes</string>
+    <string name="likesCount_6">2,018,222 likes</string>
+    <string name="likesCount_7">662,987 likes</string>
+    <string name="likesCount_8">281,166 likes</string>
+    <string name="likesCount_9">213,716 likes</string>
+    <string name="likesCount_10">107,441 likes</string>
+
+    <string name="postDescription_1">Meet my new beast</string>
+    <string name="postDescription_2">Welcome to New York</string>
+    <string name="postDescription_3">Lost in the way of life</string>
+    <string name="postDescription_4">Life of programmer in one post</string>
+    <string name="postDescription_5">The milk is expired</string>
+    <string name="postDescription_6">People\'s lives do not end when they die. It ends when they lose faith</string>
+    <string name="postDescription_7">I\'ll murder you</string>
+    <string name="postDescription_8">Do you need a reason to not want to lose?</string>
+    <string name="postDescription_9">Natural Beauty</string>
+    <string name="postDescription_10">On my way to Australia</string>
+
+    <string name="commentCount_1">View all 5,213 comments</string>
+    <string name="commentCount_2">View all 1,005 comments</string>
+    <string name="commentCount_3">View all 10,452 comments</string>
+    <string name="commentCount_4">View all 6,094 comments</string>
+    <string name="commentCount_5">View all 1,469,320 comments</string>
+    <string name="commentCount_6">View all 2,018,222 comments</string>
+    <string name="commentCount_7">View all 662,987 comments</string>
+    <string name="commentCount_8">View all 281,166 comments</string>
+    <string name="commentCount_9">View all 15,376 comments</string>
+    <string name="commentCount_10">View all 64,294 comments</string>
+
+    <string name="time_1">Sent 2m ago</string>
+    <string name="time_2">Seen 3h ago</string>
+    <string name="time_3">Seen 3m ago</string>
+    <string name="time_4">Sent 32m ago</string>
+    <string name="time_5">Seen 43m ago</string>
+    <string name="time_6">Seen 12m ago</string>
+    <string name="time_7">Sent 22h ago</string>
+    <string name="time_8">Sent 2m ago</string>
+    <string name="time_9">Seen Wednesday</string>
+    <string name="time_10">Sent 2m ago</string>
+
+</resources>
